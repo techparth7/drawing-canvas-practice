@@ -68,7 +68,3 @@ Add touch support for mobile
 Add undo/redo functionality
 
 Save drawing as image
-
-Add different brush styles
-
-Dark mode UI

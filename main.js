@@ -2,32 +2,50 @@ const canvas = document.getElementById("canvas");
 const colorPicker = document.getElementById("colorPicker");
 const lineWidthInput = document.querySelector("#lineWidth");
 const clearBtn = document.getElementById("clearBtn");
+const penBtn = document.getElementById("penBtn");
+const eraserBtn = document.getElementById("eraserBtn");
+
 const ctx = canvas.getContext("2d");
 
 //default value
 ctx.strokeStyle = colorPicker.value; //strokeStyle = color of the stock
 ctx.lineWidth = lineWidthInput.value;
 ctx.lineCap = "round";
+let currentTool = "pen";
+let penColor = colorPicker.value;
 
 //drawing state
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
-colorPicker.addEventListener("change", (e) => {
-  ctx.strokeStyle = e.target.value;
+penBtn.addEventListener("click", () => {
+  currentTool = "pen";
+  ctx.strokeStyle = colorPicker.value;
 });
 
-lineWidthInput.addEventListener("change", (e)=>{
-    ctx.lineWidth = e.target.value;
-})
+eraserBtn.addEventListener("click", () => {
+  currentTool = "eraser";
+  ctx.strokeStyle = "white"; // canvas background color;
+});
+
+colorPicker.addEventListener("change", (e) => {
+  penColor = e.target.value;
+  if (currentTool === "pen") {
+    ctx.strokeStyle = penColor;
+  }
+});
+
+lineWidthInput.addEventListener("change", (e) => {
+  ctx.lineWidth = e.target.value;
+});
 
 //mouse down start drawing
 canvas.addEventListener("mousedown", (e) => {
   isDrawing = true;
   lastX = e.offsetX; // offsetX canvas's left edge to current mouse position cordinate;
   lastY = e.offsetY;
-  console.log(lastX, lastY);
+  //console.log(lastX, lastY);
 });
 
 //mouse move
