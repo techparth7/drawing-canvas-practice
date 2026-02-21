@@ -1,70 +1,67 @@
-📂 Project Structure
-drawing-canvas-practice/
-│
+# 🎨 Drawing App (HTML Canvas)
+
+A simple and interactive drawing application built using **HTML5 Canvas** and **Vanilla JavaScript**.  
+This project allows users to draw on a canvas using a pen or eraser, change colors and line width, clear the canvas, and save their drawing as a PNG image.
+
+---
+
+## ✨ Features
+
+- ✏️ Freehand drawing using mouse
+- 🖌️ Pen and eraser tools
+- 🎨 Color picker for pen color
+- 📏 Adjustable line width
+- 🧹 Clear canvas button
+- 💾 Download drawing as a PNG image
+- 🕒 Auto-generated filename with timestamp
+
+---
+
+## 🛠️ Technologies Used
+
+- HTML5 Canvas
+- JavaScript (Vanilla)
+- CSS (for layout and styling)
+
+---
+
+## 🚀 How It Works
+
+1. **Pen Tool**
+   - Draws on the canvas using the selected color and line width.
+
+2. **Eraser Tool**
+   - Draws using the canvas background color to simulate erasing.
+
+3. **Drawing Logic**
+   - Drawing starts on `mousedown`
+   - Continues on `mousemove`
+   - Stops on `mouseup` or when the mouse leaves the canvas
+
+4. **Save Drawing**
+   - Converts the canvas to a PNG image using `toDataURL()`
+   - Automatically downloads the image with a timestamped filename
+
+---
+
+## 📂 Project Structure
+
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
-🛠️ Technologies Used
 
-HTML5 (Canvas API)
+---
 
-CSS3
+## 🧪 How to Run
 
-JavaScript (Vanilla JS)
+1. Clone the repository:
 
-✨ Features
+   ```bash
+    https://github.com/techparth7/drawing-canvas-practice.git
 
-Draw using mouse
+   ```
 
-Change brush color
+2. Open index.html in your browser.
 
-Adjust brush size
-
-Clear canvas button
-
-Responsive layout (optional)
-
-📖 How It Works
-
-The <canvas> element is used to create a drawable area.
-
-JavaScript listens for mouse events:
-
-mousedown
-
-mousemove
-
-mouseup
-
-Drawing is handled using the Canvas 2D Context API.
-
-🔧 Setup Instructions
-
-Clone the repository:
-
-git clone https://github.com/techparth7/drawing-canvas-practice.git
-
-Open the project folder.
-
-Open index.html in your browser.
-
-🎯 Purpose of This Project
-
-This repository is created for:
-
-Practicing JavaScript DOM manipulation
-
-Understanding Canvas API basics
-
-Improving front-end development skills
-
-Learning event handling in JavaScript
-
-📌 Future Improvements (Optional)
-
-Add touch support for mobile
-
-Add undo/redo functionality
-
-Save drawing as image
+That’s it — no build tools or dependencies required!
