@@ -4,7 +4,8 @@ const lineWidthInput = document.querySelector("#lineWidth");
 const clearBtn = document.getElementById("clearBtn");
 const penBtn = document.getElementById("penBtn");
 const eraserBtn = document.getElementById("eraserBtn");
-const saveBtn = document.getElementById("saveBtn");
+const saveBtnPng = document.getElementById("saveBtnPng");
+const saveBtnImg = document.getElementById("saveBtnImg");
 
 const ctx = canvas.getContext("2d");
 
@@ -72,7 +73,7 @@ canvas.addEventListener("mouseleave", () => {
 });
 
 //download img
-saveBtn.addEventListener("click", () => {
+saveBtnPng.addEventListener("click", () => {
   const dataURL = canvas.toDataURL("image/png"); // turns the drawing into a long text string that represents the image, turn drawing into a picture file
 
   const now = new Date().toISOString().replace(/[:T]/g, "-").split(".")[0];
@@ -80,6 +81,30 @@ saveBtn.addEventListener("click", () => {
   link.href = dataURL; // add link
   link.download = `drawing-${now}.png`; // download name
   link.click(); // we preatend it like "a"  tag was clicked and download it
+});
+
+saveBtnImg.addEventListener("click", () => {
+  const ctx = canvas.getContext("2d");
+
+  // Save current canvas
+  ctx.save();
+
+  // Draw background
+  ctx.globalCompositeOperation = "destination-over";
+  ctx.fillStyle = "#ffffff"; // white background
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Export JPEG
+  const dataURL = canvas.toDataURL("image/jpeg", 0.9);
+
+  // Restore canvas state
+  ctx.restore();
+
+  const now = new Date().toISOString().replace(/[:T]/g, "-").split(".")[0];
+  const link = document.createElement("a");
+  link.href = dataURL;
+  link.download = `drawing-${now}.jpg`;
+  link.click();
 });
 
 //clear the canvas
