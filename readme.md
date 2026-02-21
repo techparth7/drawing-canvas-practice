@@ -45,11 +45,10 @@ This project allows users to draw on a canvas using a pen or eraser, change colo
 ---
 
 ## 📂 Project Structure
-
-├── index.html
-├── style.css
-├── script.js
-└── README.md
+   ├── index.html
+   ├── style.css
+   ├── script.js
+   └── README.md
 
 ---
 
