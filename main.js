@@ -4,6 +4,7 @@ const lineWidthInput = document.querySelector("#lineWidth");
 const clearBtn = document.getElementById("clearBtn");
 const penBtn = document.getElementById("penBtn");
 const eraserBtn = document.getElementById("eraserBtn");
+const saveBtn = document.getElementById("saveBtn");
 
 const ctx = canvas.getContext("2d");
 
@@ -68,6 +69,17 @@ canvas.addEventListener("mouseup", () => {
 // mouse leaves canvas stop drawing
 canvas.addEventListener("mouseleave", () => {
   isDrawing = false;
+});
+
+//download img
+saveBtn.addEventListener("click", () => {
+  const dataURL = canvas.toDataURL("image/png"); // turns the drawing into a long text string that represents the image, turn drawing into a picture file
+
+  const now = new Date().toISOString().replace(/[:T]/g, "-").split(".")[0];
+  const link = document.createElement("a"); //create a a tag
+  link.href = dataURL; // add link
+  link.download = `drawing-${now}.png`; // download name
+  link.click(); // we preatend it like "a"  tag was clicked and download it
 });
 
 //clear the canvas
