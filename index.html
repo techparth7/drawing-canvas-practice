@@ -1,13 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Drawing Canvas</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="controls">
+      <label>
+        Color:
+        <input type="color" id="colorPicker" value="#000000" />
+      </label>
+      <label>
+        Line Width:
+        <input type="range" id="lineWidth" min="1" max="20" value="5" />
+      </label>
+
+      <button id="clearBtn">Clear</button>
+    </div>
     <canvas id="canvas" height="500" width="800"></canvas>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

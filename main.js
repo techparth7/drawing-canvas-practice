@@ -1,10 +1,26 @@
 const canvas = document.getElementById("canvas");
+const colorPicker = document.getElementById("colorPicker");
+const lineWidthInput = document.querySelector("#lineWidth");
+const clearBtn = document.getElementById("clearBtn");
 const ctx = canvas.getContext("2d");
+
+//default value
+ctx.strokeStyle = colorPicker.value; //strokeStyle = color of the stock
+ctx.lineWidth = lineWidthInput.value;
+ctx.lineCap = "round";
 
 //drawing state
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+
+colorPicker.addEventListener("change", (e) => {
+  ctx.strokeStyle = e.target.value;
+});
+
+lineWidthInput.addEventListener("change", (e)=>{
+    ctx.lineWidth = e.target.value;
+})
 
 //mouse down start drawing
 canvas.addEventListener("mousedown", (e) => {
@@ -14,6 +30,7 @@ canvas.addEventListener("mousedown", (e) => {
   console.log(lastX, lastY);
 });
 
+//mouse move
 canvas.addEventListener("mousemove", (e) => {
   if (!isDrawing) return;
   ctx.beginPath(); // new drawing path, so previous lines/shapes don’t connect to the new one
@@ -25,12 +42,17 @@ canvas.addEventListener("mousemove", (e) => {
   lastY = e.offsetY;
 });
 
-// mouse up → stop drawing
+// mouse up stop drawing
 canvas.addEventListener("mouseup", () => {
   isDrawing = false;
 });
 
-// mouse leaves canvas → stop drawing
+// mouse leaves canvas stop drawing
 canvas.addEventListener("mouseleave", () => {
   isDrawing = false;
+});
+
+//clear the canvas
+clearBtn.addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
